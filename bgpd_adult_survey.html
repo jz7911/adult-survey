@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buffalo Grove Park District — Adult Programs Survey</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f3;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      background: #1a5c2a;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-mark svg { display: block; }
+    .site-name { font-size: 13px; font-weight: 600; color: #1a5c2a; line-height: 1.3; }
+    .site-sub { font-size: 12px; color: #666; }
+
+    /* Survey card */
+    .survey-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .survey-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .survey-desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .geo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eeedfe;
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: #3c3489;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Progress */
+    .progress-wrap { margin-bottom: 1.75rem; }
+    .progress-label {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .progress-bar {
+      height: 4px;
+      background: #e8e8e8;
+      border-radius: 99px;
+    }
+    .progress-fill {
+      height: 4px;
+      width: 0%;
+      background: #534ab7;
+      border-radius: 99px;
+      transition: width 0.3s ease;
+    }
+
+    /* Questions */
+    .question {
+      border: 1px solid #e8e8e6;
+      border-radius: 12px;
+      padding: 1.125rem 1.25rem;
+      margin-bottom: 14px;
+      background: #fff;
+    }
+    .q-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .q-hint {
+      font-size: 12px;
+      color: #888;
+      font-weight: 400;
+      margin-left: 4px;
+    }
+    .q-sub {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .qnum {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: #eeedfe;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      color: #534ab7;
+      margin-right: 7px;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+
+    /* Radio / checkbox options */
+    .opts { display: flex; flex-direction: column; gap: 8px; }
+    .opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      padding: 7px 10px;
+      border-radius: 8px;
+      transition: background 0.12s;
+    }
+    .opt:hover { background: #f7f7f5; }
+    .opt input { margin-top: 2px; accent-color: #534ab7; flex-shrink: 0; cursor: pointer; }
+    .opt label { font-size: 13px; color: #1a1a1a; cursor: pointer; line-height: 1.4; }
+
+    /* Grid checkboxes */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 6px;
+    }
+    .gc {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .gc:hover { background: #f7f7f5; }
+    .gc input { accent-color: #534ab7; flex-shrink: 0; cursor: pointer; }
+    .gc label { font-size: 13px; color: #1a1a1a; cursor: pointer; line-height: 1.4; }
+
+    /* Other write-in */
+    .other-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      margin-top: 4px;
+    }
+    .other-row:hover { background: #f7f7f5; }
+    .other-row input[type=checkbox] { accent-color: #534ab7; flex-shrink: 0; cursor: pointer; }
+    .other-row label { font-size: 13px; color: #1a1a1a; cursor: pointer; white-space: nowrap; }
+    .other-input {
+      flex: 1;
+      padding: 6px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      color: #1a1a1a;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .other-input:focus { outline: none; border-color: #534ab7; box-shadow: 0 0 0 3px #eeedfe; }
+    .other-input:disabled { opacity: 0.35; cursor: not-allowed; background: #f5f5f3; }
+
+    /* Textarea */
+    textarea {
+      width: 100%;
+      min-height: 72px;
+      padding: 9px 11px;
+      font-size: 13px;
+      font-family: inherit;
+      color: #1a1a1a;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      line-height: 1.6;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    textarea:focus { outline: none; border-color: #534ab7; box-shadow: 0 0 0 3px #eeedfe; }
+
+    /* Submit area */
+    .submit-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 10px;
+      margin-top: 4px;
+    }
+    .anon-note { font-size: 12px; color: #999; }
+    .submit-btn {
+      background: #1a5c2a;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 32px;
+      font-size: 14px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .submit-btn:hover { background: #154a22; }
+    .submit-btn:active { transform: scale(0.98); }
+    .submit-btn:disabled { background: #3b6d11; cursor: default; }
+
+    /* Thank you state */
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .thank-you .icon {
+      width: 56px;
+      height: 56px;
+      background: #eaf3de;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .thank-you h2 { font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+    .thank-you p { font-size: 14px; color: #555; line-height: 1.6; }
+
+    /* Footer */
+    .page-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    @media (max-width: 480px) {
+      .survey-card { padding: 1.25rem; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .survey-title { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="site-header">
+    <div class="logo-mark">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3C8 3 5 6 5 9c0 5 7 12 7 12s7-7 7-12c0-3-3-6-7-6z" fill="white" opacity="0.9"/>
+        <circle cx="12" cy="9" r="2.5" fill="#1a5c2a"/>
+      </svg>
+    </div>
+    <div>
+      <div class="site-name">Buffalo Grove Park District</div>
+      <div class="site-sub">Community Input Survey</div>
+    </div>
+  </div>
+
+  <!-- Survey card -->
+  <div class="survey-card">
+
+    <div id="survey-form">
+      <h1 class="survey-title">Help us build better adult programs</h1>
+      <p class="survey-desc">8 quick questions to help us understand what adults in Buffalo Grove actually want. Your answers directly shape what we offer in 2026–2027.</p>
+
+      <div class="geo-pill">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+          <circle cx="6" cy="5" r="2.5" stroke="#3c3489" stroke-width="1.2"/>
+          <path d="M6 1C3.79 1 2 2.79 2 5c0 3 4 7 4 7s4-4 4-7c0-2.21-1.79-4-4-4z" stroke="#3c3489" stroke-width="1.2" fill="none"/>
+        </svg>
+        Buffalo Grove residents, ages 25–65 &nbsp;·&nbsp; About 3 minutes
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label" id="progress-label">Question 1 of 8</div>
+        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+      </div>
+
+      <!-- Q1 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">1</span>How old are you?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="age"><label>25–34</label></label>
+          <label class="opt"><input type="radio" name="age"><label>35–44</label></label>
+          <label class="opt"><input type="radio" name="age"><label>45–54</label></label>
+          <label class="opt"><input type="radio" name="age"><label>55–65</label></label>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">2</span>What best describes your household right now?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="hh"><label>Single adult, no kids at home</label></label>
+          <label class="opt"><input type="radio" name="hh"><label>Couple, no kids at home</label></label>
+          <label class="opt"><input type="radio" name="hh"><label>Household with children under 18</label></label>
+          <label class="opt"><input type="radio" name="hh"><label>Empty nester</label></label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">3</span>Have you participated in any adult programs through the Buffalo Grove Park District in the past year?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="part"><label>Yes</label></label>
+          <label class="opt"><input type="radio" name="part"><label>No, but I'd like to</label></label>
+          <label class="opt"><input type="radio" name="part"><label>No — I use the facilities but not the programs</label></label>
+          <label class="opt"><input type="radio" name="part"><label>No, and I haven't had a reason to</label></label>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">4</span>If you haven't joined a program, what's the main reason? <span class="q-hint">Pick one</span></div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="barrier"><label>I didn't know what was available</label></label>
+          <label class="opt"><input type="radio" name="barrier"><label>The timing doesn't work with my schedule</label></label>
+          <label class="opt"><input type="radio" name="barrier"><label>Nothing offered interests me</label></label>
+          <label class="opt"><input type="radio" name="barrier"><label>Cost is a concern</label></label>
+          <label class="opt"><input type="radio" name="barrier"><label>I do participate — not applicable</label></label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">5</span>What types of activities interest you most? <span class="q-hint">Pick up to 3</span></div>
+        <div class="grid" id="activity-grid">
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Fitness &amp; wellness</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Pickleball / tennis</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Swimming / aquatics</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Arts &amp; crafts</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Cooking / food events</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Social events / mixers</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Golf / disc golf</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Outdoor &amp; nature</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Dance / movement</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Lifelong learning</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Performing arts / music</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Volunteering</label></label>
+        </div>
+        <div class="other-row">
+          <input type="checkbox" id="other-cb" class="act-cb">
+          <label for="other-cb">Other:</label>
+          <input type="text" class="other-input" id="other-text" placeholder="Write in an activity..." disabled>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">6</span>What program format works best for you?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="format"><label>One-time events or drop-ins</label></label>
+          <label class="opt"><input type="radio" name="format"><label>Multi-week sessions (4–8 weeks)</label></label>
+          <label class="opt"><input type="radio" name="format"><label>Ongoing membership or open access</label></label>
+          <label class="opt"><input type="radio" name="format"><label>Seasonal leagues or tournaments</label></label>
+          <label class="opt"><input type="radio" name="format"><label>No preference — depends on the activity</label></label>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">7</span>When works best for you? <span class="q-hint">Select all that apply</span></div>
+        <div class="grid">
+          <label class="gc"><input type="checkbox"><label>Weekday mornings</label></label>
+          <label class="gc"><input type="checkbox"><label>Weekday afternoons</label></label>
+          <label class="gc"><input type="checkbox"><label>Weekday evenings</label></label>
+          <label class="gc"><input type="checkbox"><label>Saturday</label></label>
+          <label class="gc"><input type="checkbox"><label>Sunday</label></label>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">8</span>If you could add one adult program or activity to the Park District, what would it be?</div>
+        <p class="q-sub">Optional — but this is the most valuable question on the survey.</p>
+        <textarea placeholder="A class, a league, a monthly event — anything goes..."></textarea>
+      </div>
+
+      <div class="submit-area">
+        <span class="anon-note">Anonymous &nbsp;·&nbsp; Results shape 2026–2027 programming</span>
+        <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Submit survey</button>
+      </div>
+    </div>
+
+    <!-- Thank you screen -->
+    <div class="thank-you" id="thank-you">
+      <div class="icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M5 13l4 4L19 7" stroke="#3b6d11" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>Thank you!</h2>
+      <p>Your input makes a real difference. We'll use these results to shape adult programming at the Buffalo Grove Park District for 2026–2027.</p>
+    </div>
+
+  </div>
+
+  <div class="page-footer">© 2026 Buffalo Grove Park District &nbsp;·&nbsp; bgparks.org</div>
+
+</div>
+
+<script>
+  // Progress bar
+  const radioNames = ['age', 'hh', 'part', 'barrier', 'format'];
+
+  function updateProgress() {
+    const answered = radioNames.filter(n => document.querySelector('input[name="' + n + '"]:checked')).length;
+    const pct = Math.round((answered / 8) * 100);
+    document.getElementById('progress').style.width = pct + '%';
+    const q = Math.min(answered + 1, 8);
+    document.getElementById('progress-label').textContent = answered < 8 ? 'Question ' + q + ' of 8' : 'Almost done!';
+  }
+
+  document.querySelectorAll('input[type=radio]').forEach(i => i.addEventListener('change', updateProgress));
+
+  // Other write-in logic
+  const otherCb = document.getElementById('other-cb');
+  const otherText = document.getElementById('other-text');
+  const allActCbs = document.querySelectorAll('.act-cb');
+
+  function enforceCap() {
+    const checked = document.querySelectorAll('.act-cb:checked').length;
+    allActCbs.forEach(cb => {
+      if (!cb.checked) cb.disabled = checked >= 3;
+    });
+    if (checked >= 3 && !otherCb.checked) {
+      otherText.disabled = true;
+    }
+  }
+
+  otherCb.addEventListener('change', function () {
+    otherText.disabled = !this.checked;
+    if (this.checked) { otherText.focus(); }
+    else { otherText.value = ''; }
+    enforceCap();
+  });
+
+  allActCbs.forEach(cb => cb.addEventListener('change', enforceCap));
+
+  // Submit
+  function handleSubmit() {
+    document.getElementById('survey-form').style.display = 'none';
+    document.getElementById('thank-you').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
