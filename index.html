@@ -15,12 +15,8 @@
       padding: 2rem 1rem;
     }
 
-    .page {
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    .page { max-width: 680px; margin: 0 auto; }
 
-    /* Header */
     .site-header {
       display: flex;
       align-items: center;
@@ -37,11 +33,9 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .logo-mark svg { display: block; }
     .site-name { font-size: 13px; font-weight: 600; color: #1a5c2a; line-height: 1.3; }
     .site-sub { font-size: 12px; color: #666; }
 
-    /* Survey card */
     .survey-card {
       background: #fff;
       border-radius: 16px;
@@ -62,7 +56,6 @@
       line-height: 1.6;
       margin-bottom: 1.25rem;
     }
-
     .geo-pill {
       display: inline-flex;
       align-items: center;
@@ -76,32 +69,30 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Progress */
     .progress-wrap { margin-bottom: 1.75rem; }
-    .progress-label {
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 6px;
-    }
-    .progress-bar {
-      height: 4px;
-      background: #e8e8e8;
-      border-radius: 99px;
-    }
+    .progress-label { font-size: 12px; color: #888; margin-bottom: 6px; }
+    .progress-bar { height: 4px; background: #e8e8e8; border-radius: 99px; }
     .progress-fill {
-      height: 4px;
-      width: 0%;
-      background: #534ab7;
-      border-radius: 99px;
-      transition: width 0.3s ease;
+      height: 4px; width: 0%; background: #1a5c2a;
+      border-radius: 99px; transition: width 0.3s ease;
     }
 
-    /* Questions */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #999;
+      margin: 1.75rem 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #f0f0ee;
+    }
+
     .question {
       border: 1px solid #e8e8e6;
       border-radius: 12px;
       padding: 1.125rem 1.25rem;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       background: #fff;
     }
     .q-text {
@@ -111,36 +102,26 @@
       margin-bottom: 10px;
       line-height: 1.5;
     }
-    .q-hint {
-      font-size: 12px;
-      color: #888;
-      font-weight: 400;
-      margin-left: 4px;
-    }
-    .q-sub {
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
+    .q-hint { font-size: 12px; color: #888; font-weight: 400; margin-left: 4px; }
+    .q-sub { font-size: 12px; color: #777; margin-bottom: 10px; line-height: 1.5; font-style: italic; }
+
     .qnum {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 22px;
       height: 22px;
-      background: #eeedfe;
+      background: #e8f3ec;
       border-radius: 50%;
       font-size: 11px;
       font-weight: 700;
-      color: #534ab7;
+      color: #1a5c2a;
       margin-right: 7px;
       flex-shrink: 0;
       vertical-align: middle;
     }
 
-    /* Radio / checkbox options */
-    .opts { display: flex; flex-direction: column; gap: 8px; }
+    .opts { display: flex; flex-direction: column; gap: 6px; }
     .opt {
       display: flex;
       align-items: flex-start;
@@ -151,10 +132,9 @@
       transition: background 0.12s;
     }
     .opt:hover { background: #f7f7f5; }
-    .opt input { margin-top: 2px; accent-color: #534ab7; flex-shrink: 0; cursor: pointer; }
+    .opt input { margin-top: 2px; accent-color: #1a5c2a; flex-shrink: 0; cursor: pointer; }
     .opt label { font-size: 13px; color: #1a1a1a; cursor: pointer; line-height: 1.4; }
 
-    /* Grid checkboxes */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
@@ -170,10 +150,9 @@
       transition: background 0.12s;
     }
     .gc:hover { background: #f7f7f5; }
-    .gc input { accent-color: #534ab7; flex-shrink: 0; cursor: pointer; }
+    .gc input { accent-color: #1a5c2a; flex-shrink: 0; cursor: pointer; }
     .gc label { font-size: 13px; color: #1a1a1a; cursor: pointer; line-height: 1.4; }
 
-    /* Other write-in */
     .other-row {
       display: flex;
       align-items: center;
@@ -183,7 +162,7 @@
       margin-top: 4px;
     }
     .other-row:hover { background: #f7f7f5; }
-    .other-row input[type=checkbox] { accent-color: #534ab7; flex-shrink: 0; cursor: pointer; }
+    .other-row input[type=checkbox] { accent-color: #1a5c2a; flex-shrink: 0; cursor: pointer; }
     .other-row label { font-size: 13px; color: #1a1a1a; cursor: pointer; white-space: nowrap; }
     .other-input {
       flex: 1;
@@ -196,10 +175,9 @@
       border-radius: 8px;
       transition: border-color 0.15s, box-shadow 0.15s;
     }
-    .other-input:focus { outline: none; border-color: #534ab7; box-shadow: 0 0 0 3px #eeedfe; }
+    .other-input:focus { outline: none; border-color: #1a5c2a; box-shadow: 0 0 0 3px #e8f3ec; }
     .other-input:disabled { opacity: 0.35; cursor: not-allowed; background: #f5f5f3; }
 
-    /* Textarea */
     textarea {
       width: 100%;
       min-height: 72px;
@@ -214,9 +192,8 @@
       line-height: 1.6;
       transition: border-color 0.15s, box-shadow 0.15s;
     }
-    textarea:focus { outline: none; border-color: #534ab7; box-shadow: 0 0 0 3px #eeedfe; }
+    textarea:focus { outline: none; border-color: #1a5c2a; box-shadow: 0 0 0 3px #e8f3ec; }
 
-    /* Submit area */
     .submit-area {
       display: flex;
       align-items: center;
@@ -241,9 +218,7 @@
     }
     .submit-btn:hover { background: #154a22; }
     .submit-btn:active { transform: scale(0.98); }
-    .submit-btn:disabled { background: #3b6d11; cursor: default; }
 
-    /* Thank you state */
     .thank-you {
       display: none;
       text-align: center;
@@ -252,7 +227,7 @@
     .thank-you .icon {
       width: 56px;
       height: 56px;
-      background: #eaf3de;
+      background: #e8f3ec;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -262,7 +237,6 @@
     .thank-you h2 { font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
     .thank-you p { font-size: 14px; color: #555; line-height: 1.6; }
 
-    /* Footer */
     .page-footer {
       text-align: center;
       margin-top: 1.5rem;
@@ -281,7 +255,6 @@
 
 <div class="page">
 
-  <!-- Header -->
   <div class="site-header">
     <div class="logo-mark">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -295,110 +268,113 @@
     </div>
   </div>
 
-  <!-- Survey card -->
   <div class="survey-card">
-
     <div id="survey-form">
+
       <h1 class="survey-title">Help us build better adult programs</h1>
-      <p class="survey-desc">8 quick questions to help us understand what adults in Buffalo Grove actually want. Your answers directly shape what we offer in 2026–2027.</p>
+      <p class="survey-desc">8 questions about adult programs and activities at the Buffalo Grove Park District. Your answers are anonymous and will directly shape what we offer in 2026–2027.</p>
 
       <div class="geo-pill">
         <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
           <circle cx="6" cy="5" r="2.5" stroke="#3c3489" stroke-width="1.2"/>
           <path d="M6 1C3.79 1 2 2.79 2 5c0 3 4 7 4 7s4-4 4-7c0-2.21-1.79-4-4-4z" stroke="#3c3489" stroke-width="1.2" fill="none"/>
         </svg>
-        Buffalo Grove residents, ages 25–65 &nbsp;·&nbsp; About 3 minutes
+        Buffalo Grove residents &nbsp;·&nbsp; About 3 minutes
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-label" id="progress-label">Question 1 of 8</div>
+        <div class="progress-label" id="progress-label">0 of 8 questions answered</div>
         <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
       </div>
 
+      <!-- SECTION 1: CURRENT PARTICIPATION -->
+      <div class="section-label">Your current participation</div>
+
       <!-- Q1 -->
       <div class="question">
-        <div class="q-text"><span class="qnum">1</span>How old are you?</div>
+        <div class="q-text"><span class="qnum">1</span>Have you participated in adult programs or classes offered by the Buffalo Grove Park District in the past year? <span class="q-hint">Select all that apply</span></div>
         <div class="opts">
-          <label class="opt"><input type="radio" name="age"><label>25–34</label></label>
-          <label class="opt"><input type="radio" name="age"><label>35–44</label></label>
-          <label class="opt"><input type="radio" name="age"><label>45–54</label></label>
-          <label class="opt"><input type="radio" name="age"><label>55–65</label></label>
+          <label class="opt"><input type="checkbox"><label>Yes — I have taken a class or joined a program</label></label>
+          <label class="opt"><input type="checkbox"><label>No — I would like to but have not yet</label></label>
+          <label class="opt"><input type="checkbox"><label>No — I was not aware of what was available</label></label>
+          <label class="opt"><input type="checkbox"><label>No — nothing offered has interested me</label></label>
         </div>
       </div>
 
       <!-- Q2 -->
       <div class="question">
-        <div class="q-text"><span class="qnum">2</span>What best describes your household right now?</div>
+        <div class="q-text"><span class="qnum">2</span>What has prevented you from participating in adult programs? <span class="q-hint">Select all that apply</span></div>
+        <p class="q-sub">If you already participate regularly, choose "Not applicable" below.</p>
         <div class="opts">
-          <label class="opt"><input type="radio" name="hh"><label>Single adult, no kids at home</label></label>
-          <label class="opt"><input type="radio" name="hh"><label>Couple, no kids at home</label></label>
-          <label class="opt"><input type="radio" name="hh"><label>Household with children under 18</label></label>
-          <label class="opt"><input type="radio" name="hh"><label>Empty nester</label></label>
+          <label class="opt"><input type="checkbox"><label>I was not aware of what programs were available</label></label>
+          <label class="opt"><input type="checkbox"><label>The schedule does not fit my availability</label></label>
+          <label class="opt"><input type="checkbox"><label>The cost is too high</label></label>
+          <label class="opt"><input type="checkbox"><label>The programs offered do not interest me</label></label>
+          <label class="opt"><input type="checkbox"><label>I do not have anyone to participate with</label></label>
+          <label class="opt"><input type="checkbox"><label>I am not sure the programs are meant for someone like me</label></label>
+          <label class="opt"><input type="checkbox"><label>I have a physical limitation or health concern</label></label>
+          <label class="opt"><input type="checkbox"><label>Registration or sign-up is too difficult</label></label>
+          <label class="opt"><input type="checkbox"><label>Not applicable — I participate regularly</label></label>
         </div>
       </div>
 
+      <!-- SECTION 2: WHAT WOULD BRING YOU IN -->
+      <div class="section-label">What would bring you in</div>
+
       <!-- Q3 -->
       <div class="question">
-        <div class="q-text"><span class="qnum">3</span>Have you participated in any adult programs through the Buffalo Grove Park District in the past year?</div>
+        <div class="q-text"><span class="qnum">3</span>What would most motivate you to participate in a Park District adult program? <span class="q-hint">Select up to 2</span></div>
         <div class="opts">
-          <label class="opt"><input type="radio" name="part"><label>Yes</label></label>
-          <label class="opt"><input type="radio" name="part"><label>No, but I'd like to</label></label>
-          <label class="opt"><input type="radio" name="part"><label>No — I use the facilities but not the programs</label></label>
-          <label class="opt"><input type="radio" name="part"><label>No, and I haven't had a reason to</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Improving my physical health or fitness</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Meeting new people or building social connections</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Learning a new skill</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Having something to look forward to each week</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Stress relief or mental wellness</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Doing something with a partner, friend, or family member</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Being part of my community</label></label>
+          <label class="opt"><input type="checkbox" class="mot-cb"><label>Getting outdoors and active</label></label>
         </div>
       </div>
 
       <!-- Q4 -->
       <div class="question">
-        <div class="q-text"><span class="qnum">4</span>If you haven't joined a program, what's the main reason? <span class="q-hint">Pick one</span></div>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="barrier"><label>I didn't know what was available</label></label>
-          <label class="opt"><input type="radio" name="barrier"><label>The timing doesn't work with my schedule</label></label>
-          <label class="opt"><input type="radio" name="barrier"><label>Nothing offered interests me</label></label>
-          <label class="opt"><input type="radio" name="barrier"><label>Cost is a concern</label></label>
-          <label class="opt"><input type="radio" name="barrier"><label>I do participate — not applicable</label></label>
-        </div>
-      </div>
-
-      <!-- Q5 -->
-      <div class="question">
-        <div class="q-text"><span class="qnum">5</span>What types of activities interest you most? <span class="q-hint">Pick up to 3</span></div>
+        <div class="q-text"><span class="qnum">4</span>Which types of adult programs or activities interest you? <span class="q-hint">Select up to 3</span></div>
         <div class="grid" id="activity-grid">
           <label class="gc"><input type="checkbox" class="act-cb"><label>Fitness &amp; wellness</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Pickleball / tennis</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Swimming / aquatics</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Arts &amp; crafts</label></label>
-          <label class="gc"><input type="checkbox" class="act-cb"><label>Cooking / food events</label></label>
-          <label class="gc"><input type="checkbox" class="act-cb"><label>Social events / mixers</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Cooking / food</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Social events</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Golf / disc golf</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Outdoor &amp; nature</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Dance / movement</label></label>
-          <label class="gc"><input type="checkbox" class="act-cb"><label>Lifelong learning</label></label>
+          <label class="gc"><input type="checkbox" class="act-cb"><label>Classes &amp; lectures</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Performing arts / music</label></label>
           <label class="gc"><input type="checkbox" class="act-cb"><label>Volunteering</label></label>
         </div>
         <div class="other-row">
           <input type="checkbox" id="other-cb" class="act-cb">
           <label for="other-cb">Other:</label>
-          <input type="text" class="other-input" id="other-text" placeholder="Write in an activity..." disabled>
+          <input type="text" class="other-input" id="other-text" placeholder="Describe an activity..." disabled>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">5</span>What program format works best for you?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="format"><label>Single sessions or drop-in (no advance registration)</label></label>
+          <label class="opt"><input type="radio" name="format"><label>A series of sessions over several weeks</label></label>
+          <label class="opt"><input type="radio" name="format"><label>Ongoing membership or open access</label></label>
+          <label class="opt"><input type="radio" name="format"><label>Leagues or competitive events</label></label>
+          <label class="opt"><input type="radio" name="format"><label>No preference</label></label>
         </div>
       </div>
 
       <!-- Q6 -->
       <div class="question">
-        <div class="q-text"><span class="qnum">6</span>What program format works best for you?</div>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="format"><label>One-time events or drop-ins</label></label>
-          <label class="opt"><input type="radio" name="format"><label>Multi-week sessions (4–8 weeks)</label></label>
-          <label class="opt"><input type="radio" name="format"><label>Ongoing membership or open access</label></label>
-          <label class="opt"><input type="radio" name="format"><label>Seasonal leagues or tournaments</label></label>
-          <label class="opt"><input type="radio" name="format"><label>No preference — depends on the activity</label></label>
-        </div>
-      </div>
-
-      <!-- Q7 -->
-      <div class="question">
-        <div class="q-text"><span class="qnum">7</span>When works best for you? <span class="q-hint">Select all that apply</span></div>
+        <div class="q-text"><span class="qnum">6</span>When are you generally available for adult programs? <span class="q-hint">Select all that apply</span></div>
         <div class="grid">
           <label class="gc"><input type="checkbox"><label>Weekday mornings</label></label>
           <label class="gc"><input type="checkbox"><label>Weekday afternoons</label></label>
@@ -408,30 +384,45 @@
         </div>
       </div>
 
+      <!-- Q7 -->
+      <div class="question">
+        <div class="q-text"><span class="qnum">7</span>If you could add one adult program or activity to the Park District, what would it be?</div>
+        <p class="q-sub">This is the most useful question on the survey. Be as specific as you like.</p>
+        <textarea placeholder="Describe a class, a league, a monthly gathering, or any activity you would join..."></textarea>
+      </div>
+
+      <!-- SECTION 3: ABOUT YOU -->
+      <div class="section-label">About you</div>
+
       <!-- Q8 -->
       <div class="question">
-        <div class="q-text"><span class="qnum">8</span>If you could add one adult program or activity to the Park District, what would it be?</div>
-        <p class="q-sub">Optional — but this is the most valuable question on the survey.</p>
-        <textarea placeholder="A class, a league, a monthly event — anything goes..."></textarea>
+        <div class="q-text"><span class="qnum">8</span>What is your age?</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="age"><label>25–34</label></label>
+          <label class="opt"><input type="radio" name="age"><label>35–44</label></label>
+          <label class="opt"><input type="radio" name="age"><label>45–54</label></label>
+          <label class="opt"><input type="radio" name="age"><label>55–64</label></label>
+          <label class="opt"><input type="radio" name="age"><label>65–74</label></label>
+          <label class="opt"><input type="radio" name="age"><label>75 or older</label></label>
+        </div>
       </div>
 
       <div class="submit-area">
-        <span class="anon-note">Anonymous &nbsp;·&nbsp; Results shape 2026–2027 programming</span>
-        <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Submit survey</button>
+        <span class="anon-note">Responses are anonymous &nbsp;·&nbsp; Results shape 2026–2027 programming</span>
+        <button class="submit-btn" onclick="handleSubmit()">Submit</button>
       </div>
+
     </div>
 
-    <!-- Thank you screen -->
     <div class="thank-you" id="thank-you">
       <div class="icon">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M5 13l4 4L19 7" stroke="#3b6d11" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 13l4 4L19 7" stroke="#1a5c2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h2>Thank you!</h2>
-      <p>Your input makes a real difference. We'll use these results to shape adult programming at the Buffalo Grove Park District for 2026–2027.</p>
+      <h2>Thank you for your input.</h2>
+      <p>Your responses will help shape adult programming at the Buffalo Grove Park District for 2026–2027.</p>
     </div>
-
   </div>
 
   <div class="page-footer">© 2026 Buffalo Grove Park District &nbsp;·&nbsp; bgparks.org</div>
@@ -439,44 +430,45 @@
 </div>
 
 <script>
-  // Progress bar
-  const radioNames = ['age', 'hh', 'part', 'barrier', 'format'];
-
   function updateProgress() {
-    const answered = radioNames.filter(n => document.querySelector('input[name="' + n + '"]:checked')).length;
-    const pct = Math.round((answered / 8) * 100);
+    const formatDone = document.querySelector('input[name="format"]:checked') ? 1 : 0;
+    const ageDone = document.querySelector('input[name="age"]:checked') ? 1 : 0;
+    const done = formatDone + ageDone;
+    const pct = Math.round((done / 8) * 100);
     document.getElementById('progress').style.width = pct + '%';
-    const q = Math.min(answered + 1, 8);
-    document.getElementById('progress-label').textContent = answered < 8 ? 'Question ' + q + ' of 8' : 'Almost done!';
+    document.getElementById('progress-label').textContent =
+      done < 8 ? done + ' of 8 questions answered' : 'Almost done!';
   }
 
   document.querySelectorAll('input[type=radio]').forEach(i => i.addEventListener('change', updateProgress));
 
-  // Other write-in logic
+  // Activity cap — Q4, max 3
   const otherCb = document.getElementById('other-cb');
   const otherText = document.getElementById('other-text');
   const allActCbs = document.querySelectorAll('.act-cb');
 
-  function enforceCap() {
+  function enforceActCap() {
     const checked = document.querySelectorAll('.act-cb:checked').length;
-    allActCbs.forEach(cb => {
-      if (!cb.checked) cb.disabled = checked >= 3;
-    });
-    if (checked >= 3 && !otherCb.checked) {
-      otherText.disabled = true;
-    }
+    allActCbs.forEach(cb => { if (!cb.checked) cb.disabled = checked >= 3; });
+    if (checked >= 3 && !otherCb.checked) otherText.disabled = true;
   }
 
   otherCb.addEventListener('change', function () {
     otherText.disabled = !this.checked;
-    if (this.checked) { otherText.focus(); }
-    else { otherText.value = ''; }
-    enforceCap();
+    if (this.checked) otherText.focus();
+    else otherText.value = '';
+    enforceActCap();
   });
+  allActCbs.forEach(cb => cb.addEventListener('change', enforceActCap));
 
-  allActCbs.forEach(cb => cb.addEventListener('change', enforceCap));
+  // Motivation cap — Q3, max 2
+  const motCbs = document.querySelectorAll('.mot-cb');
+  function enforceMotCap() {
+    const checked = document.querySelectorAll('.mot-cb:checked').length;
+    motCbs.forEach(cb => { if (!cb.checked) cb.disabled = checked >= 2; });
+  }
+  motCbs.forEach(cb => cb.addEventListener('change', enforceMotCap));
 
-  // Submit
   function handleSubmit() {
     document.getElementById('survey-form').style.display = 'none';
     document.getElementById('thank-you').style.display = 'block';
